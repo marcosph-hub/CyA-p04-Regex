@@ -1,14 +1,27 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <regex>
 
 void FileManagment(const std::string INPUT_FILENAME, const std::string OUTPUT_FILENAME) {
   std::ifstream input(INPUT_FILENAME);
   std::ofstream ouput(OUTPUT_FILENAME);
+  std::vector<std::string> filedata;
+  std::string str_filedata;
+  std::smatch str_match;
+  const std::regex initialize_var_regex("(int|double)\s(\w+)\s?=(\s?[+|-]?\d+\.?\d*)");
+  while(!input.eof()) {
+    std::getline(input,str_filedata);
+    std::regex_match(str_filedata, str_match, initialize_var_regex);
+    for (auto i : str_match) {
+      filedata.push_back(i);
+    }
+    //filedata.push_back(str_filedata);
+  }
 
-  if (!input.good()) { //problema con apertura de fichero
-    std::cerr << "ERROR: no se pudo abrir el fichero" << std::endl;
-
-  } 
+  for (unsigned int i = 0; i < filedata.size(); i++) {
+    std::cout << filedata[i] << std::endl;
+  }
 }
 
 int main(int argc, char *argv[]) {

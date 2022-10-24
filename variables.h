@@ -9,7 +9,7 @@ class Variable {
 
   public:
   Variable();
-  Variable(std::string type, std::string name, int line, bool initialized);
+  Variable(std::string new_type, std::string new_name, int new_line, bool new_flag);
   std::string Type();
   std::string Name();
   int Line();
