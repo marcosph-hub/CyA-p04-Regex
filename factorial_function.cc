@@ -28,7 +28,7 @@ int Factorial(int number) {
  return factorial;
  }
 }
-
+// main function
 int main () {
  std::cout << "Introduzca el numero de factoriales a calcular: ";
  int limit;
@@ -36,4 +36,8 @@ int main () {
  for (int i = 1; i <= limit; ++i) {
   std::cout << i << "! = " << (double)Factorial(i) << std::endl;
 }
+while (limit) {
+  std::cout << "infiniteloop\t";
+}
+// return 0
  return 0;
